@@ -1,0 +1,39 @@
+-- este script se corre en el usuario gobierno
+
+DROP TABLE alumnos CASCADE CONSTRAINTS;
+DROP TABLE carreras CASCADE CONSTRAINTS;
+DROP TABLE ciudades CASCADE CONSTRAINTS;
+DROP TABLE clasificaciones CASCADE CONSTRAINTS;
+DROP TABLE direcciones CASCADE CONSTRAINTS;
+DROP TABLE historial_carreras CASCADE CONSTRAINTS;
+DROP TABLE provincias CASCADE CONSTRAINTS;
+DROP TABLE regiones CASCADE CONSTRAINTS;
+DROP TABLE sedes CASCADE CONSTRAINTS;
+
+CREATE TABLE carreras (
+    carrera_id      VARCHAR2(10) CONSTRAINT car_pk PRIMARY KEY,
+    nombre_carrera  VARCHAR2(60) NOT NULL,
+    semestres       NUMBER(2),
+    valor_semestre  NUMBER(10)
+);
+
+CREATE TABLE sedes (
+    sede_id         NUMBER(4) CONSTRAINT sed_pk PRIMARY KEY,
+    nombre_sede     VARCHAR2(30) NOT NULL,
+    direccion_sede   VARCHAR2(50),
+    fono_sede       VARCHAR2(15),
+    ciudad_id       NUMBER(4) NOT NULL,
+    CONSTRAINT sed_ciu_fk FOREIGN KEY ( ciudad_id )
+        REFERENCES gobierno.ciudades ( ciudad_id )
+);
+
+CREATE TABLE direcciones (
+    carrera_id       VARCHAR2(10) NOT NULL,
+    sede_id          NUMBER(4) NOT NULL,
+    nombre_director  VARCHAR2(30) NOT NULL,
+    CONSTRAINT dir_pk PRIMARY KEY ( carrera_id, sede_id ),
+    CONSTRAINT dir_car_fk FOREIGN KEY ( carrera_id )
+        REFERENCES inacap.carreras ( carrera_id ),
+    CONSTRAINT dir_sed_fk FOREIGN KEY ( sede_id )
+        REFERENCES inacap.sedes ( sede_id )
+);

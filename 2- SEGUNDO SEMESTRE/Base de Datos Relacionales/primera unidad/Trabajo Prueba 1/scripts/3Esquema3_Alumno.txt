@@ -1,0 +1,57 @@
+-- este script se corre en el usuario alumno
+DROP TABLE alumnos CASCADE CONSTRAINTS;
+DROP TABLE carreras CASCADE CONSTRAINTS;
+DROP TABLE ciudades CASCADE CONSTRAINTS;
+DROP TABLE clasificaciones CASCADE CONSTRAINTS;
+DROP TABLE direcciones CASCADE CONSTRAINTS;
+DROP TABLE historial_carreras CASCADE CONSTRAINTS;
+DROP TABLE provincias CASCADE CONSTRAINTS;
+DROP TABLE regiones CASCADE CONSTRAINTS;
+DROP TABLE sedes CASCADE CONSTRAINTS;
+
+CREATE TABLE clasificaciones (
+    id_clase       CHAR(2) CONSTRAINT cla_pk PRIMARY KEY,
+    clasificacion  VARCHAR2(30),
+    edad_minima    NUMBER(3),
+    edad_maxima    NUMBER(3),
+    CONSTRAINT clas_edad_ck CHECK ( edad_minima < edad_maxima )
+);
+
+CREATE TABLE alumnos (
+    alumno_id       NUMBER(6) CONSTRAINT alu_pk PRIMARY KEY,
+    nombre          VARCHAR2(20) NOT NULL,
+    apellido        VARCHAR2(25) NOT NULL,
+    correo          VARCHAR2(40),
+    celular         VARCHAR2(20),
+    fecha_nace      DATE NOT NULL,
+    alumno_tutor    NUMBER(6) ,
+    inicio_estudio  DATE NOT NULL,
+    ciudad_id       NUMBER(4) NOT NULL,
+    carrera_id      VARCHAR2(10) NOT NULL,
+    sede_id         NUMBER(4) NOT NULL,
+    CONSTRAINT alu_ciu_fk FOREIGN KEY ( ciudad_id )
+        REFERENCES gobierno.ciudades ( ciudad_id ),
+    CONSTRAINT alu_dir_fk FOREIGN KEY ( carrera_id, sede_id )
+        REFERENCES inacap.direcciones ( carrera_id, sede_id )
+);
+
+CREATE TABLE historial_carreras (
+    carrera_id    VARCHAR2(10) NOT NULL,
+    alumno_id     NUMBER(6) NOT NULL,
+    fecha_inicio  DATE,
+    fecha_fin     DATE,
+    titulado      CHAR(1) DEFAULT 'n' NOT NULL,
+    CONSTRAINT hist_tit_bool CHECK ( titulado IN ( 'n', 's' ) ),
+    CONSTRAINT hc_pk PRIMARY KEY ( carrera_id, alumno_id ),
+    CONSTRAINT hc_alu_fk FOREIGN KEY ( alumno_id )
+        REFERENCES alumnos ( alumno_id ),
+    CONSTRAINT hc_car_fk FOREIGN KEY ( carrera_id )
+        REFERENCES inacap.carreras ( carrera_id )
+);
+
+
+
+
+
+
+

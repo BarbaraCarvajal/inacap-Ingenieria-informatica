@@ -1,0 +1,35 @@
+-- este script se corre en el usuario gobierno
+
+DROP TABLE alumnos CASCADE CONSTRAINTS;
+DROP TABLE carreras CASCADE CONSTRAINTS;
+DROP TABLE ciudades CASCADE CONSTRAINTS;
+DROP TABLE clasificaciones CASCADE CONSTRAINTS;
+DROP TABLE direcciones CASCADE CONSTRAINTS;
+DROP TABLE historial_carreras CASCADE CONSTRAINTS;
+DROP TABLE provincias CASCADE CONSTRAINTS;
+DROP TABLE regiones CASCADE CONSTRAINTS;
+DROP TABLE sedes CASCADE CONSTRAINTS;
+
+CREATE TABLE regiones (
+    region_id      NUMBER(2) CONSTRAINT reg_pk PRIMARY KEY,
+    nombre_region  VARCHAR2(45) NOT NULL,
+    superficie     NUMBER(7, 1)
+);
+
+CREATE TABLE provincias (
+    provincia_id      CHAR(5) CONSTRAINT pro_pk PRIMARY KEY,
+    nombre_provincia  VARCHAR2(40),
+    delegado          VARCHAR2(35),
+    region_id         NUMBER(2),
+    CONSTRAINT pro_reg_fk FOREIGN KEY ( region_id )
+        REFERENCES regiones ( region_id )
+);
+
+CREATE TABLE ciudades (
+    ciudad_id      NUMBER(4) CONSTRAINT ciu_pk PRIMARY KEY,
+    nombre_ciudad  VARCHAR2(40),
+    poblacion      NUMBER(7),
+    provincia_id   CHAR(5),
+    CONSTRAINT ciu_pro_fk FOREIGN KEY ( provincia_id )
+        REFERENCES provincias ( provincia_id )
+);
