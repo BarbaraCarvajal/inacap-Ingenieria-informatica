@@ -1,0 +1,41 @@
+Hablar acerca de las ventajas del manejo de información y lo que puede llegar a generar con un buen uso
+
+Introducción:
+
+Hasta el día de hoy, el ser humano ha tenido la necesidad de ordenar la información que recibe de distintos medios y actividades en el curso diario de su existencia, para esta necesidad se han creado las bases de datos, se han desarrollado diferentes modelos y software para poder facilitar la creación de los mismos. La historia ha pasado por distintos tipos de modelos de bases de datos, los cuales se han usado para representar los datos y facilitar la comprensión de estos, también para facilitar el uso de los mismos. Al finalizar este informe usted sabrá todo lo que quiera saber acerca de los modelos relacionales de la forma más resumida posible 
+
+¿Qué sucede en un diagrama cuando hay dos entidades con cardinalidad muchos a muchos?
+
+Cuando en un diagrama existen 2 entidades con cardinalidad muchos a muchos, el diagrama se desordena, se produce una redundancia de datos y provoca que los datos sean más difíciles de poder leer e interpretar (procesarlos) de tal manera
+que el conseguir información útil a través de estos se dificulte más.
+
+
+
+SqlDBM
+Características 
+- Comparar revisiones 
+- Modos de visualización personalizables
+- Tema claro y oscuro
+SqlDBM
+Es Online
+https://sqldbm.com/Home/
+
+Visual Paradigm 
+Características
+- Plantillas de diagramas ER
+- No hay limitación en el número de diagramas 
+- Exportación de diagramas sin marca de agua
+Visual Paradigm
+16.3
+https://www.visual-paradigm.com/download/
+
+Diagrams.net
+Características
+- Permite guardar los archivos tanto en la nube (Dropbox, Google Drive) como de forma local (en un disco duro)
+- Es gratuito
+- Posibilidad de editar los diagramas realizados con programas externos
+- Disponibilidad en varios idiomas
+draw.io 
+No tiene versiones (al menos no dice)
+https://app.diagrams.net/
+

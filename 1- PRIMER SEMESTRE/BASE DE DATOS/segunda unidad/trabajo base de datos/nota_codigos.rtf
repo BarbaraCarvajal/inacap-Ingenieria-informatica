@@ -1,0 +1,137 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2638
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 create database facturas;\
+show databases;\
+use facturas;\
+\
+CREATE TABLE factura (\
+	num_factura int (8) auto_increment,\
+    rut_cliente varchar (12),\
+    codigo_vendedor int (5),\
+    fecha_venta date,\
+    codigo_producto int (10),\
+    cantidad_producto int (99),\
+    rut_recibe varchar (12),\
+    primary key (num_factura)\
+    );\
+CREATE TABLE producto (\
+	codigo_producto int (10),\
+    nombre_producto varchar (10),\
+    precio_prodcuto int (15),\
+    primary key (codigo_producto) );\
+    \
+ALTER TABLE producto MODIFY COLUMN codigo_producto int auto_increment;\
+ALTER TABLE producto ADD precio int (15);\
+ALTER TABLE producto DROP COLUMN precio;\
+ALTER TABLE producto CHANGE precio_prodcuto precio_producto int (15);\
+\
+CREATE TABLE ciudad (\
+	codigo_ciudad int (15) auto_increment,\
+    ciudad_cliente varchar (15),\
+    comuna_cliente varchar (15),\
+    primary key (codigo_ciudad)\
+    );\
+CREATE TABLE local_tienda (\
+	codigo_local int (15) auto_increment,\
+    nombre_local varchar (15),\
+    direccion_local varchar (30),\
+    primary key (codigo_local)\
+    );\
+CREATE TABLE cliente (\
+	rut_cliente varchar (12),\
+    direccion_cliente varchar (30),\
+    fono_cliente int (15),\
+    giro_cliente varchar (30),\
+    ciudad_cliente varchar (15),\
+    primary key (rut_cliente)\
+    );\
+CREATE TABLE vendedor (\
+	codigo_vendedor int (5) auto_increment,\
+    nombre_vendedor varchar (15),\
+    apellidos_vendedor varchar (15),\
+    codigo_local int (5),\
+    primary key (codigo_vendedor)\
+    );\
+CREATE TABLE recibe (\
+	rut_recibe varchar (12),\
+    firma varchar (30),\
+    nombre_recibe varchar (15)\
+    );\
+\
+-- rellenar tablas:\
+\
+-- tabla factura:\
+insert into factura (num_factura, rut_cliente, codigo_vendedor, fecha_venta, codigo_producto, cantidad_producto,rut_recibe) values (11111111, "19.234.345-9", 12345, "2022-07-2", 23454326, 45, "12.985.235-4");\
+insert into factura (num_factura, rut_cliente, codigo_vendedor, fecha_venta, codigo_producto, cantidad_producto,rut_recibe) values (11111112, "12.488.345-5", 12345, "2022-07-2", 66675343, 10, "14.345.249-3");\
+insert into factura (num_factura, rut_cliente, codigo_vendedor, fecha_venta, codigo_producto, cantidad_producto,rut_recibe) values (11111113, "17.345.888-0", 12364, "2022-08-2", 23454326, 15, "18.876.980-2");\
+insert into factura (num_factura, rut_cliente, codigo_vendedor, fecha_venta, codigo_producto, cantidad_producto,rut_recibe) values (11111114, "13.298.344-7", 12345, "2022-06-2", 66675343, 2, "19.998.094-5");\
+insert into factura (num_factura, rut_cliente, codigo_vendedor, fecha_venta, codigo_producto, cantidad_producto,rut_recibe) values (11111115, "19.784.332-9", 12364, "2022-07-2", 66675343, 23, "20.111.008-5");\
+\
+-- tabla producto\
+insert into producto (codigo_producto, nombre_producto,precio_producto) values (66675343, "televisor", 350000);\
+insert into producto (codigo_producto, nombre_producto,precio_producto) values (33344421, "zapatilas", 28990);\
+insert into producto (codigo_producto, nombre_producto,precio_producto) values (23454326, "Ipad", 450000);\
+insert into producto (codigo_producto, nombre_producto,precio_producto) values (22390832, "Pantalones", 15990);\
+insert into producto (codigo_producto, nombre_producto,precio_producto) values (99803231, "Sandalias", 10990);\
+\
+-- tabla ciudad\
+insert into ciudad (ciudad_cliente, comuna_cliente) values ("Quilpue", "Quilpue");\
+insert into ciudad (ciudad_cliente, comuna_cliente) values ("Vi\'f1a del Mar", "Vi\'f1a del Mar");\
+insert into ciudad (ciudad_cliente, comuna_cliente) values ("Valparaiso", "Valparaiso");\
+insert into ciudad (ciudad_cliente, comuna_cliente) values ("Villa Alemana", "Villa Alemana");\
+insert into ciudad (ciudad_cliente, comuna_cliente) values ("Con Con", "Con Con");\
+\
+-- tabla local_tienda\
+insert into local_tienda (nombre_local, direccion_local) values ("Ripley", "San Alfonso 2343");\
+insert into local_tienda (nombre_local, direccion_local) values ("Falabella", "Av San Martin 5643");\
+insert into local_tienda (nombre_local, direccion_local) values ("Tricot", "Portales 2356");\
+insert into local_tienda (nombre_local, direccion_local) values ("Fashions Park", "Calle Valparaiso 2098");\
+insert into local_tienda (nombre_local, direccion_local) values ("Fruna", "Granadilla 2343");\
+\
+-- tabla local_tienda agregar codigo\
+insert into local_tienda (codigo_local) values (23434);\
+insert into local_tienda (codigo_local) values (23423);\
+insert into local_tienda (codigo_local) values (23923);\
+insert into local_tienda (codigo_local) values (23723);\
+insert into local_tienda (codigo_local) values (23223);\
+\
+-- tabla cliente\
+insert into cliente (rut_cliente, direccion_cliente, fono_cliente, giro_cliente, ciudad_cliente) values ("19.234.345-9", "av siempre viva 123", 923435465, "Salud", "Quilpue");\
+insert into cliente (rut_cliente, direccion_cliente, fono_cliente, giro_cliente, ciudad_cliente) values ("12.488.345-5", "Freire 2343", 9765488, "Belleza ", "Vi\'f1a del mar");\
+insert into cliente (rut_cliente, direccion_cliente, fono_cliente, giro_cliente, ciudad_cliente) values ("17.345.888-0", "Errazuriz 4433", 9342356, "Educacion", "Con Con ");\
+insert into cliente (rut_cliente, direccion_cliente, fono_cliente, giro_cliente, ciudad_cliente) values ("13.298.344-7", "Los carrera 3432", 9987632, "Turismo", "Villa Alemana");\
+insert into cliente (rut_cliente, direccion_cliente, fono_cliente, giro_cliente, ciudad_cliente) values ("19.456.000-9", "Villa Hermosa 2312", 9234355, "Servicios administrativos", "Valparaiso");\
+\
+-- tabla vendedor\
+insert into vendedor (codigo_vendedor, nombre_vendedor, apellidos_vendedor, codigo_local) values (23454326, "Barbara", "Carvajal Saez", 23434);\
+insert into vendedor (codigo_vendedor, nombre_vendedor, apellidos_vendedor, codigo_local) values (23454327, "Camila", "Gomez Errazuriz", 23423);\
+insert into vendedor (codigo_vendedor, nombre_vendedor, apellidos_vendedor, codigo_local) values (23454328, "Mauricio", "Perez Iturria", 23923);\
+insert into vendedor (codigo_vendedor, nombre_vendedor, apellidos_vendedor, codigo_local) values (23454329, "David", "Suarez Molina", 23723);\
+insert into vendedor (codigo_vendedor, nombre_vendedor, apellidos_vendedor, codigo_local) values (23454311, "Ondina", "Orellana perez", 23223);\
+\
+-- tabla recibe \
+insert into recibe (rut_recibe, firma, nombre_recibe) values ("12.435.456-3" "xxx", "Camilo");\
+insert into recibe (rut_recibe, firma, nombre_recibe) values ("13.654.987-0", "xxx", "Genoveva");\
+insert into recibe (rut_recibe, firma, nombre_recibe) values ("19.456.888-0", "xxx", "Romina");\
+insert into recibe (rut_recibe, firma, nombre_recibe) values ("23.454.232-k", "xxx", "Ondina");\
+insert into recibe (rut_recibe, firma, nombre_recibe) values ("12.456.455-3", "xxx", "Manuel");\
+\
+select * from factura;\
+select * from producto;\
+select * from ciudad;\
+select * from local_tienda;\
+select * from cliente;\
+select * from vendedor;\
+select * from recibe;\
+\
+select * from producto where precio_producto <= 30000;\
+select * from factura where num_factura = 11111113;\
+select * from producto order by nombre_producto;\
+select cantidad_producto from factura where num_factura = 11111113;\
+\
+}

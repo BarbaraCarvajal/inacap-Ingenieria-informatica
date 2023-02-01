@@ -1,0 +1,49 @@
+Modulos en python:Son biblotecas que tiene python que 
+podemos importar y utilizar. Existe bibloteca estándar y tambien los podemos crear.
+La función se llama "import".
+
+Se escribe en la parte superior del codigo.
+
+import Nos permite importar  toda la funcionalidad
+de un módulo de la bibloteca estándar de python
+
+
+ejemplos:
+
+from random import randint
+randint -> random de un entero
+
+form math import sqrt, pow -> pow :elevacion (2**2) sqrt: raiz cuadrada
+
+from math import sqrt as raiz -> sqrt: raiz cuadrada raiz -> nombre que le ponemos nosotros
+
+import math
+print(dir(math))
+
+#dir -> directorio que  muestra las funciones disponibles.
+
+import random
+print(dir(random))
+
+#dir -> directorio que  muestra las funciones disponibles.
+
+Funciones: es un pedazo de código que tiene en su interior
+estructuras, tales como ciclos, formulas, etc. Este codigo se puede llamar en cualquier
+momento con la funcion -> def
+
+def nombre_funcion(argumentos):
+    cuerpo del codigo
+
+ejemplo
+
+def test():
+    print("Este print llama desde la función saludar()")
+test() -> Para llamar a una función, se usa el nombre de la función seguido de paréntesis.
+
+si usa return hay que usar print al final, si no, no
+
+----
+
+
+Hay dos archivos uno contiene el codigo principal donde se realiza la importacion
+en el otro estan las funciones
