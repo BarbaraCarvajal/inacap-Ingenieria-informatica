@@ -1,0 +1,1 @@
+SELECT ROUND (1282.248, -2) FROM dual;
